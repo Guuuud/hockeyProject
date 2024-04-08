@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Guuuud/hockeyProject/static/css/main.d0235efa.css",
+    "main.js": "/Guuuud/hockeyProject/static/js/main.ccd5a7c4.js",
+    "static/js/453.feb7f9f0.chunk.js": "/Guuuud/hockeyProject/static/js/453.feb7f9f0.chunk.js",
+    "static/media/background.jpg": "/Guuuud/hockeyProject/static/media/background.befc9cf50ba8685059e8.jpg",
+    "index.html": "/Guuuud/hockeyProject/index.html",
+    "main.d0235efa.css.map": "/Guuuud/hockeyProject/static/css/main.d0235efa.css.map",
+    "main.ccd5a7c4.js.map": "/Guuuud/hockeyProject/static/js/main.ccd5a7c4.js.map",
+    "453.feb7f9f0.chunk.js.map": "/Guuuud/hockeyProject/static/js/453.feb7f9f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0235efa.css",
+    "static/js/main.ccd5a7c4.js"
+  ]
+}
