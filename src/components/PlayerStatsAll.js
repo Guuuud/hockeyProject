@@ -70,12 +70,17 @@ const rows = jsonData.map((item) =>
     ({
       countryCode:item['BIRTH COUNTRY'],
       name: item["PLAYER"],
-      team: item["TEAM"],
+      AAV:item['AAV'],
+      team: item["TEAM_FULL_NAMES"],
       season: item["SEASON"],
       calories: item["GOALS/60"],
       POSITION: item['POSITION'],
       TOI: item['TOI'],
       GP: item['GP'],
+      GOALS:item['GOALS'],
+      SHOTS:item['SHOTS'],
+      TAKEAWAYS:item['TAKEAWAYS'],
+      HITS:item['HITS'],
       TOIGP: item['TOI/GP'],
       GOALS60: item['GOALS/60'],
       TOTAL_ASSISTS60: item['TOTAL ASSISTS/60'],
@@ -148,6 +153,7 @@ const rows = jsonData.map((item) =>
       OFF_ZONE_STARTS60: item['OFF. ZONE STARTS/60'],
       NEU_ZONE_STARTS60: item['NEU. ZONE STARTS/60'],
       DEF_ZONE_STARTS60: item['DEF. ZONE STARTS/60'],
+      PERCENTAGE:item['PERCENTAGE'],
     })
   );
 
@@ -187,6 +193,13 @@ const headCells = [
     label: 'Player',
   },
   {
+    id: 'season',
+    numeric: false,
+    disablePadding: false,
+    // label: 'Calories',
+    label: 'Season',
+  },
+  {
     id: 'team',
     numeric: false,
     disablePadding: false,
@@ -212,16 +225,16 @@ const headCells = [
     label: 'TOI',
   },
   {
-    id: 'CF/60',
+    id: 'IPP',
     numeric: true,
     disablePadding: false,
-    label: 'CF/60',
+    label: 'IPP',
   },
   {
     id: 'TOTAL ASSISTS/60',
     numeric: true,
     disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
+    label: 'PRED/ACTUAL',
   },
   {
     id: 'Nationalite',
@@ -230,40 +243,35 @@ const headCells = [
     label: 'Nationalite',
   },
   {
-    id: 'CF/60',
+    id: 'SALARY',
     numeric: true,
     disablePadding: false,
-    label: 'CF/60',
+    label: 'SALARY',
+  },
+  
+  {
+    id: 'GOALS',
+    numeric: true,
+    disablePadding: false,
+    label: 'GOALS',
   },
   {
-    id: 'TOTAL ASSISTS/60',
+    id: 'SHOTS',
     numeric: true,
     disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
+    label: 'SHOTS',
   },
   {
-    id: 'CF/60',
+    id: 'TAKEAWAYS',
     numeric: true,
     disablePadding: false,
-    label: 'CF/60',
+    label: 'TAKEAWAYS',
   },
   {
-    id: 'TOTAL ASSISTS/60',
+    id: 'HITS',
     numeric: true,
     disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
-  },
-  {
-    id: 'CF/60',
-    numeric: true,
-    disablePadding: false,
-    label: 'CF/60',
-  },
-  {
-    id: 'TOTAL ASSISTS/60',
-    numeric: true,
-    disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
+    label: 'HITS',
   },
   
 ];
@@ -507,32 +515,35 @@ export default function EnhancedTable2() {
                       />
                     </TableCell>
                     <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
-                    >
-                      {row.team}
-                    </TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
-                    <TableCell align="right">{row.season}</TableCell>
-                    <TableCell align="right">{row.POSITION}</TableCell>
-                    <TableCell align="right">{row.TOI}</TableCell>
-                    <TableCell align="right">{row.GP}</TableCell>
-                    <TableCell align="right">{row.TOIGP}</TableCell>
-                    <TableCell align="right">{row.GOALS60}</TableCell>
-                    <TableCell align="right">{row.TOTAL_ASSISTS60}</TableCell>
-                    <TableCell align="right">{row.FIRST_ASSISTS60}</TableCell>
-                    <TableCell align="right">{row.SECOND_ASSISTS60}</TableCell>
-                    <TableCell align="right">{row.SECOND_ASSISTS60}</TableCell>
-                    <TableCell align="right" style={{ fontSize: '32px' }}>
-                      {countryFlags[row.countryCode] || '🇺🇳'}
-                    </TableCell>
-                    <TableCell><ProgressBar percent={70.56} color="green" /> </TableCell>
-                    {/* <ProgressBar percent={70.56} color="green" /> */}
-                    <TableCell align="right"><TableCell align="right" style={{ borderBottom: 'none' }}>
-
-              </TableCell></TableCell>
+                    
+                    component="th"
+                    id={labelId}
+                    scope="row"
+                    padding="none"
+                  >
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.season}</TableCell>
+                  <TableCell align="right">{row.team}</TableCell>
+                  
+                  <TableCell align="right">{row.POSITION}</TableCell>
+                  <TableCell align="right">{row.GP}</TableCell>
+                  <TableCell align="right">{row.TOI}</TableCell>
+                  <TableCell align="right">{row.IPP}</TableCell>
+                 
+                  <TableCell align="right">{row.PERCENTAGE}</TableCell>
+                  <TableCell align="right" style={{ fontSize: '32px' }}>
+                    {countryFlags[row.countryCode] || '🇺🇳'}
+                  </TableCell>
+                  <TableCell align="right">{row.AAV}</TableCell>
+                  
+                  <TableCell align="right">{row.GOALS}</TableCell>
+                  <TableCell align="right">{row.SHOTS}</TableCell>
+                  <TableCell align="right">{row.TAKEAWAYS}</TableCell>
+                  {/* {/* <TableCell align="right">{row.HITS}</TableCell> */}
+                  <TableCell align="right">{row.HITS}</TableCell>
+                    <TableCell align="right">
+              </TableCell>
                   </TableRow>
                 );
               })}

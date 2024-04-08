@@ -78,6 +78,11 @@ const rows = jsonData.map((item) =>
       POSITION: item['POSITION'],
       TOI: item['TOI'],
       GP: item['GP'],
+      GOALS:item['GOALS'],
+      SHOTS:item['SHOTS'],
+      SALARY:item['AAV'],
+      TAKEAWAYS:item['TAKEAWAYS'],
+      HITS:item['HITS'],
       TOIGP: item['TOI/GP'],
       GOALS60: item['GOALS/60'],
       TOTAL_ASSISTS60: item['TOTAL ASSISTS/60'],
@@ -150,6 +155,7 @@ const rows = jsonData.map((item) =>
       OFF_ZONE_STARTS60: item['OFF. ZONE STARTS/60'],
       NEU_ZONE_STARTS60: item['NEU. ZONE STARTS/60'],
       DEF_ZONE_STARTS60: item['DEF. ZONE STARTS/60'],
+      PERCENTAGE:item['PERCENTAGE'],
     })
   );
 
@@ -180,20 +186,19 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-// 定义表头
+
 const headCells = [
   {
-    id: 'name',
+    id: 'player',
     numeric: false,
     disablePadding: true,
     label: 'Player',
   },
   {
-    id: 'team',
+    id: 'year',
     numeric: false,
     disablePadding: false,
-    // label: 'Calories',
-    label: 'Teams',
+    label: 'Year',
   },
   {
     id: 'POSITION',
@@ -214,16 +219,22 @@ const headCells = [
     label: 'TOI',
   },
   {
-    id: 'CF/60',
+    id: 'IPP',
     numeric: true,
     disablePadding: false,
-    label: 'CF/60',
+    label: 'IPP',
   },
   {
-    id: 'TOTAL ASSISTS/60',
+    id: 'SALARY',
     numeric: true,
     disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
+    label: 'SALARY',
+  },
+  {
+    id: 'PRED/ACTUAL',
+    numeric: true,
+    disablePadding: false,
+    label: 'PRED/ACTUAL',
   },
   {
     id: 'Nationalite',
@@ -232,41 +243,30 @@ const headCells = [
     label: 'Nationalite',
   },
   {
-    id: 'CF/60',
+    id: 'GOALS',
     numeric: true,
     disablePadding: false,
-    label: 'CF/60',
+    label: 'GOALS	',
   },
   {
-    id: 'TOTAL ASSISTS/60',
+    id: 'SHOTS	',
     numeric: true,
     disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
+    label: 'SHOTS',
   },
   {
-    id: 'CF/60',
+    id: 'TAKEAWAYS',
     numeric: true,
     disablePadding: false,
-    label: 'CF/60',
+    label: 'TAKEAWAYS',
   },
   {
-    id: 'TOTAL ASSISTS/60',
+    id: 'HITS',
     numeric: true,
     disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
+    label: 'HITS',
   },
-  {
-    id: 'CF/60',
-    numeric: true,
-    disablePadding: false,
-    label: 'CF/60',
-  },
-  {
-    id: 'TOTAL ASSISTS/60',
-    numeric: true,
-    disablePadding: false,
-    label: 'TOTAL ASSISTS/60',
-  },
+  
   
 ];
 
@@ -350,7 +350,6 @@ function EnhancedTableToolbar(props) {
       ) : (
         <>
           <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
-            WSH
           </Typography>
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="Team">Year</InputLabel>
@@ -514,22 +513,26 @@ export default function EnhancedTable() {
                       scope="row"
                       padding="none"
                     >
-                      {row.team}
+                      {row.name}
                     </TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
                     <TableCell align="right">{row.season}</TableCell>
+                    
                     <TableCell align="right">{row.POSITION}</TableCell>
-                    <TableCell align="right">{row.TOI}</TableCell>
                     <TableCell align="right">{row.GP}</TableCell>
-                    <TableCell align="right">{row.TOIGP}</TableCell>
-                    <TableCell align="right">{row.GOALS60}</TableCell>
-                    <TableCell align="right">{row.TOTAL_ASSISTS60}</TableCell>
-                    <TableCell align="right">{row.FIRST_ASSISTS60}</TableCell>
-                    <TableCell align="right">{row.SECOND_ASSISTS60}</TableCell>
-                    <TableCell align="right">{row.SECOND_ASSISTS60}</TableCell>
+                    <TableCell align="right">{row.TOI}</TableCell>
+                    <TableCell align="right">{row.IPP}</TableCell>
+                    <TableCell align="right">{row.SALARY}</TableCell>
+                   
+                    <TableCell align="right">{row.PERCENTAGE}</TableCell>
                     <TableCell align="right" style={{ fontSize: '32px' }}>
                       {countryFlags[row.countryCode] || '🇺🇳'}
                     </TableCell>
+                    <TableCell align="right">{row.GOALS}</TableCell>
+                    <TableCell align="right">{row.SHOTS}</TableCell>
+                    <TableCell align="right">{row.TAKEAWAYS}</TableCell>
+                    {/* {/* <TableCell align="right">{row.HITS}</TableCell> */}
+                    <TableCell align="right">{row.HITS}</TableCell> 
+                   
                     
 
                     <TableCell align="right"><TableCell align="right" style={{ borderBottom: 'none' }}>

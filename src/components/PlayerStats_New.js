@@ -23,13 +23,13 @@ const MyChartComponent = () => {
         {
           name: 'Predicted Salary',
           type: 'line',
-          data: player.years.map(year => [year.year, year.stats.SALARY]),
+          data: player.years.map(year => [year.year, year.stats.AAV]),
           showSymbol: true,
         },
         {
           name: 'Actual Salary',
           type: 'line',
-          data: player.years.map(year => [year.year, year.stats.SALARY]),
+          data: player.years.map(year => [year.year, year.stats.PRED]),
           showSymbol: true,
         }
       ];

@@ -33,9 +33,15 @@ function PlayerStats() {
             <TableHead>
               <TableRow>
                 <TableCell>Year</TableCell>
-                <TableCell align="right">Predicted Salary</TableCell>
-                <TableCell align="right">Actual Salary</TableCell>
-                <TableCell align="right">Score</TableCell>
+                <TableCell align="right">GP</TableCell>
+                <TableCell align="right">POSITION</TableCell>
+                <TableCell align="right">TOI</TableCell>
+                <TableCell align="right">IPP</TableCell>
+                <TableCell align="right">PRED/ACTUAL</TableCell>
+                <TableCell align="right">GOALS</TableCell>
+                <TableCell align="right">SHOTS</TableCell>
+                <TableCell align="right">TAKEAWAYS</TableCell>
+                <TableCell align="right">HITS</TableCell>
                 {/* 添加更多的列头 */}
               </TableRow>
             </TableHead>
@@ -48,9 +54,40 @@ function PlayerStats() {
                   <TableCell component="th" scope="row">
                     {yearData.year}
                   </TableCell>
-                  <TableCell align="right">{yearData.stats.predicted_salary}</TableCell>
-                  <TableCell align="right">{yearData.stats.actual_salary}</TableCell>
-                  <TableCell align="right">{yearData.stats.score}</TableCell>
+                  <TableCell align="right">{yearData.stats.GP}</TableCell>
+                  <TableCell align="right">{yearData.stats.POSITION}</TableCell>
+                  <TableCell align="right">{yearData.stats.TOI}</TableCell>
+                  <TableCell align="right">{yearData.stats.IPP}</TableCell>
+                  <TableCell align="right">{yearData.stats.PERCENTAGE}</TableCell>
+                  <TableCell align="right">{yearData.stats.GOALS}</TableCell>
+                  <TableCell align="right">{yearData.stats.SHOTS}</TableCell>
+                  <TableCell align="right">{yearData.stats.TAKEAWAYS}</TableCell>
+                  <TableCell align="right">{yearData.stats.HITS}</TableCell>
+
+                  {/* <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      padding="none"
+                    >
+                      {yearData.stats.name}
+                    </TableCell>
+                    <TableCell align="right">{yearData.stats.season}</TableCell>
+                    
+                    <TableCell align="right">{yearData.stats.POSITION}</TableCell>
+                    <TableCell align="right">{yearData.stats.GP}</TableCell>
+                    <TableCell align="right">{yearData.stats.TOI}</TableCell>
+                    <TableCell align="right">{yearData.stats.IPP}</TableCell>
+                   
+                    <TableCell align="right">{yearData.stats.PERCENTAGE}</TableCell>
+                    <TableCell align="right" style={{ fontSize: '32px' }}>
+                      {countryFlags[yearData.stats.countryCode] || '🇺🇳'}
+                    </TableCell>
+                    <TableCell align="right">{yearData.stats.GOALS}</TableCell>
+                    <TableCell align="right">{yearData.stats.SHOTS}</TableCell>
+                    <TableCell align="right">{yearData.stats.TAKEAWAYS}</TableCell>
+                    
+                    <TableCell align="right">{yearData.stats.HITS}</TableCell> */}
                   {/* 渲染更多的列数据 */}
                 </TableRow>
               ))}

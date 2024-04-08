@@ -23,24 +23,24 @@ echarts.use([
 const NutrientChart = () => {
   const [option, setOption] = useState({});
   const [selectedXAxis, setSelectedXAxis] = useState('TOI');
-  const [selectedYAxis, setSelectedYAxis] = useState('Actual Salary');
+  const [selectedYAxis, setSelectedYAxis] = useState('SALARY');
   const schema = [
     { name: 'name', index: 0 },
     { name: 'group', index: 1 },
-    { name: 'Actual Salary', index: 2 },
-    { name: 'Predicted Salary', index: 3 },
-    { name: 'GP', index: 5 },
-    { name: 'TOI', index: 6 },
-    { name: 'GOALS/60', index: 7 },
-    { name: 'SECOND ASSISTS/60', index: 8 },
-    { name: 'FIRST ASSISTS/60', index: 9 },
-    { name: 'TOTAL ASSISTS/60', index: 10 },
-    { name: 'IPP', index: 11 },
-    { name: 'MINOR/60', index: 12 },
-    { name: 'MAJOR/60', index: 13 },
-    { name: 'GIVEAWAYS/60', index: 14 },
-    { name: 'TOTAL PENALTIES/60', index: 15 },
-    { name: 'id', index: 16 },
+    { name: 'GP', index: 2 },
+    { name: 'TOI/GP', index: 3 },
+    { name: 'TOI', index: 5 },
+    { name: 'IPP', index: 6 },
+    { name: 'GOALS', index: 7 },
+    { name: 'TOTAL ASSISTS', index: 8 },
+    { name: 'FIRST ASSISTS', index: 9 },
+    { name: 'SECOND ASSISTS', index: 10 },
+    { name: 'TOTAL POINTS', index: 11 },
+    { name: 'SHOTS', index: 12 },
+    { name: 'IXG', index: 13 },
+    { name: 'ICF', index: 14 },
+    { name: 'IFF', index: 15 },
+    { name: 'SALARY', index: 16 },
   ];
   useEffect(() => {
     
@@ -130,7 +130,7 @@ const NutrientChart = () => {
                 item[fieldIndices[selectedXAxis]], // 使用selectedXAxis作为字段索引
                 item[fieldIndices[selectedYAxis]], // 使用selectedYAxis作为字段索引
                 item[fieldIndices['group']],
-                item[fieldIndices['id']],
+                item[fieldIndices['SALARY']],
             ]),
             
             animationThreshold: 5000,
@@ -143,7 +143,7 @@ const NutrientChart = () => {
     }
 
         const originData = Nutrition
-        const normalizedData = normalizeData(originData).slice(0, 1000);
+        const normalizedData = normalizeData(originData).slice(0, 100000);
         const updatedOption = getOption(normalizedData, selectedXAxis, selectedYAxis);
         setOption(updatedOption);
         // setOption(getOption(normalizedData));
